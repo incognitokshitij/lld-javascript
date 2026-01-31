@@ -1,10 +1,14 @@
 class Logger {
+    // Private static field - cannot be accessed or modified outside the class
+    static #instance;
+
     constructor() {
-        if (Logger.instance) {
-            return Logger.instance;// Return existing instance
+        // If instance already exists, return it (singleton behavior)
+        if (Logger.#instance) {
+            return Logger.#instance;
         }
         this.logs = [];
-        Logger.instance = this;
+        Logger.#instance = this;
     }
 
     log(message) {
